@@ -14,14 +14,18 @@ export class TypeComponent {
     list: Type[];
 
     constructor(private service: TypeService, private dialog: Dialog) {
-        this.service.loadList().subscribe(dto => this.loadData(dto));
+        this.loadData();
     }
 
-    loadData(dto: any[]) {
-        this.list = dto.map(data => new Type(data));
+    loadData() {
+        this.service.loadList().subscribe(dto => {
+            this.list = dto.map((data: any) => new Type(data));
+        });
     }
 
     open() {
-        this.dialog.open(TypeEditorDialog);
+        this.dialog.open(TypeEditorDialog).then(result => {
+            this.service.save(null, result).subscribe(() => this.loadData());
+        });
     }
 }

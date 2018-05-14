@@ -24,12 +24,17 @@ export class TypeEditorDialog extends BaseDialog {
         this.form = new Type({});
         this.service.loadParentTypes().subscribe(dto => {
             this.parentTypes = dto;
-            this.result = this.parentTypes && this.parentTypes.length ? this.parentTypes[0].name : '';
+            if (this.parentTypes && this.parentTypes.length) {
+                this.parentTypeSelected(this.parentTypes[0]);
+            } else {
+                this.form.parentName = '';
+            }
         });
     }
 
     parentTypeSelected(parentType: any) {
-        this.result = parentType.name;
+        this.form.parentName = parentType.name;
+        this.form.parentId = parentType.id;
     }
 
     parentTypeCreate() {
@@ -42,6 +47,6 @@ export class TypeEditorDialog extends BaseDialog {
     }
 
     protected onConfirmed(): any {
-        return null;
+        return this.form.toServerDto();
     }
 }
