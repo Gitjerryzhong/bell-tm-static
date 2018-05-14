@@ -1,0 +1,52 @@
+<modal-dialog title="添加项目类别">
+    <modal-body>
+        <form class="form-horizontal">
+            <form-field label="类别名称">
+                <input type="text" name="name" class="form-control" [(ngModel)]="form.name" placeholder="输入类别名称" />
+            </form-field>
+            <form-field label="项目等级">
+                <select name="level" class="form-control" [(ngModel)]="form.level">
+                    <option *ngFor="let level of levels" [ngValue]="level.value">
+                        {{level.label}}
+                    </option>
+                </select>
+            </form-field>
+            <form-field label="周期">
+                <input type="number" name="period" class="form-control" [(ngModel)]="form.period" placeholder="建设周期" />
+            </form-field>
+            <form-field label="是否屏蔽">
+                <input type="checkbox" name="enabled" style="margin-top: .75rem;" [(ngModel)]="form.enabled"/>
+            </form-field>
+            <form-field label="主类">
+                <!-- <select name="parentType" class="form-control" [(ngModel)]="form.parentId">
+                    <option value="">选择主类</option>
+                    <option *ngFor="let item of parentTypes" [ngValue]="item.id">
+                        {{item.name}}
+                    </option>
+                </select> -->
+                <div #dropdown class="dropdown input-group">
+                    <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" readonly [value]="result" placeholder="点击选择" *ngIf="pending">
+                    <input type="text" class="form-control" [(ngModel)]="form.parentName" placeholder="主类名称" *ngIf="!pending"/>
+                    <div class="dropdown-menu" style="width: 100%;; padding: 5px;" *ngIf="pending">
+                        <div class="table-wrapper">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr *ngFor="let item of parentTypes" (click)="parentTypeSelected(item)" tabindex="1" class="options">
+                                        <td>{{item.name}}</td>
+                                    </tr>
+                                    <tr (click)="parentTypeCreate()">
+                                        <td class="newOne">新增</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form-field>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button modalCancel>关闭</button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="validate">保存</button>
+    </modal-footer>
+</modal-dialog>

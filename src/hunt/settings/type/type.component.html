@@ -1,0 +1,29 @@
+<div class="btn-toolbar">
+    <div class="btn-group ml-auto">
+        <button class="btn btn-primary" (click)="open()">新建</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>主类</th>
+            <th>类别名称</th>
+            <th>等级</th>
+            <th>周期(年)</th>
+            <th>屏蔽</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-type [ngForOf]="list" let-i="index">
+            <tr>
+                <td>{{i + 1}}</td>
+                <td>{{type.parentName}}</td>
+                <td>{{type.name}}</td>
+                <td>{{type.level}}</td>
+                <td>{{type.period}}</td>
+                <td>{{type.enabled}}</td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
