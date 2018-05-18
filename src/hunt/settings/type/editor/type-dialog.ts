@@ -16,7 +16,6 @@ export class TypeEditorDialog extends BaseDialog {
     form: Type;
     levels = Level;
     parentTypes: any[];
-    result: string;
     pending = true;
 
     constructor(private service: TypeService) {
@@ -38,7 +37,8 @@ export class TypeEditorDialog extends BaseDialog {
     }
 
     parentTypeCreate() {
-        this.result = null;
+        this.form.parentName = null;
+        this.form.parentId = null;
         this.pending = false;
     }
 

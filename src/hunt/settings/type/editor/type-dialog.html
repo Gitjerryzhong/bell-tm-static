@@ -26,7 +26,7 @@
                 </select> -->
                 <div #dropdown class="dropdown input-group">
                     <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" readonly [value]="form.parentName" placeholder="点击选择" *ngIf="pending">
-                    <input type="text" class="form-control" [(ngModel)]="form.parentName" placeholder="主类名称" *ngIf="!pending"/>
+                    <input type="text" class="form-control" name="parentName" [(ngModel)]="form.parentName" placeholder="主类名称" *ngIf="!pending"/>
                     <div class="dropdown-menu" style="width: 100%;; padding: 5px;" *ngIf="pending">
                         <div class="table-wrapper">
                             <table class="table table-hover">
