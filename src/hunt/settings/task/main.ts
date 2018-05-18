@@ -1,38 +1,49 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-import { CommonDialogsModule } from 'core/common-dialogs';
-import { CommonDirectivesModule } from 'core/common-directives';
-import { Dialog } from 'core/dialogs';
-import { RestModule } from 'core/rest';
+import {CommonDialogsModule} from 'core/common-dialogs';
+import {CommonDirectivesModule} from 'core/common-directives';
+import {Dialog} from 'core/dialogs';
+import {RestModule} from 'core/rest';
 
-import { TypeEditorDialog } from './editor/type-dialog';
-import { TaskComponent } from './type.component';
-import { TaskService } from './type.service';
+import {FormViewerModule} from './shared/form-viewer.module';
+
+import {FormEditorComponent} from './editor/form-editor.component';
+import {BatchRoutingModule} from './form-routing.module';
+import {ViewComponent} from './form.component';
+import {FormService} from './form.service';
+import {ItemComponent} from './item/item.component';
+import {ListComponent} from './list/form-list.component';
 
 @NgModule({
     imports: [
         BrowserModule,
-        CommonDirectivesModule,
-        RestModule.for('/api/hunt/tasks'),
-        CommonDialogsModule,
         FormsModule,
+        RestModule.for('/api/hunt/tasks'),
+        FormViewerModule,
+        CommonDialogsModule,
+        CommonDirectivesModule,
+        BatchRoutingModule,
     ],
     declarations: [
-        TaskComponent,
-        TypeEditorDialog,
+        FormEditorComponent,
+        ItemComponent,
+        ListComponent,
+        ViewComponent,
     ],
     providers: [
         Dialog,
-        TaskService,
+        FormService,
     ],
-    entryComponents: [
-        TypeEditorDialog,
+    bootstrap: [
+        ViewComponent,
     ],
-    bootstrap: [TaskComponent],
+    exports: [
+        ViewComponent,
+    ],
 })
-class MainModule {}
+export class TaskFormModule {}
 
-platformBrowserDynamic().bootstrapModule(MainModule);
+platformBrowserDynamic().bootstrapModule(TaskFormModule);

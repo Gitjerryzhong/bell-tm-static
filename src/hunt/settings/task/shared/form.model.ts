@@ -1,10 +1,19 @@
+import * as moment from 'moment';
+
 export const ReviewType = [
     {label: '项目申请', value: 'APPLICATION'},
     {label: '项目检查', value: 'CHECK'},
     {label: '其他', value: 'OTHER'},
 ];
 
-export class Task {
+export const Ban = [
+    {label: '校级在研', value: 'UNIVERSITY'},
+    {label: '市级在研', value: 'CITY'},
+    {label: '省级在研', value: 'PROVINCE'},
+    {label: '国家级在研', value: 'NATION'},
+];
+
+export class TaskForm {
     id: number;
     title: string;
     content: string;
@@ -25,15 +34,7 @@ export class Task {
         this.ban = dto.ban;
     }
 
-    toServerDto(): any {
-        return {
-            title: this.title,
-            content: this.content,
-            startDate: this.startDate,
-            endDate: this.endDate,
-            type: this.type,
-            remind: this.remind,
-            ban: this.ban,
-        };
+    get isApplyDateValid(): boolean {
+        return !(moment().isBefore(this.startDate, 'day') || moment().isAfter(this.endDate, 'day'));
     }
 }

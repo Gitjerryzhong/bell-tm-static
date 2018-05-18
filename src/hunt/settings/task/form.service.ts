@@ -1,11 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
 import { ApiUrl, EditService, Rest } from 'core/rest';
 
 @Injectable()
-export class TaskService extends EditService {
+export class FormService extends EditService {
+    list: any[];
 
     constructor(rest: Rest, api: ApiUrl) {
         super(rest, api);
