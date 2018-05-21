@@ -34,7 +34,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label class="control-label">限制条件</label>
-                <select name="type" class="form-control" [(ngModel)]="form.ban">
+                <select name="ban" class="form-control" [(ngModel)]="form.ban">
                     <option value="">不限制</option>
                     <option *ngFor="let item of bans" [ngValue]="item.value">
                         {{ item.label }}
@@ -49,8 +49,8 @@
             </div>
             <div class="form-group col-md-6">
                 <label class="control-label">专家注意事项</label>
-                <textarea class="form-control" name="content" rows="4" [(ngModel)]="form.remind" placeholder="专家注意事项"></textarea>
+                <textarea class="form-control" name="remind" rows="4" [(ngModel)]="form.remind" placeholder="专家注意事项"></textarea>
             </div>
         </div>
-    </form>{{form | json}}
+    </form>
 </ng-container>

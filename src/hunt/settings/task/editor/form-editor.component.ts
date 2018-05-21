@@ -41,7 +41,7 @@ export class FormEditorComponent {
     }
 
     onLoadData(dto: any) {
-        this.form = new TaskForm(dto.form);
+        this.form = new TaskForm(dto);
     }
 
     goBack(): void {
