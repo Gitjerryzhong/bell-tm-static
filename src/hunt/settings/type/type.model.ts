@@ -1,12 +1,5 @@
 import { constants } from 'zlib';
 
-export const Level = [
-    {label: '校级', value: 'UNIVERSITY'},
-    {label: '市级', value: 'CITY'},
-    {label: '省级', value: 'PROVINCE'},
-    {label: '国家级', value: 'NATION'},
-];
-
 export class Type {
     parentId: number;
     parentName: string;

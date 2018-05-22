@@ -18,12 +18,6 @@
                 <input type="checkbox" name="enabled" style="margin-top: .75rem;" [(ngModel)]="form.enabled"/>
             </form-field>
             <form-field label="主类">
-                <!-- <select name="parentType" class="form-control" [(ngModel)]="form.parentId">
-                    <option value="">选择主类</option>
-                    <option *ngFor="let item of parentTypes" [ngValue]="item.id">
-                        {{item.name}}
-                    </option>
-                </select> -->
                 <div #dropdown class="dropdown input-group">
                     <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" readonly [value]="form.parentName" placeholder="点击选择" *ngIf="pending">
                     <input type="text" class="form-control" name="parentName" [(ngModel)]="form.parentName" placeholder="主类名称" *ngIf="!pending"/>

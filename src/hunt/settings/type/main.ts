@@ -8,6 +8,8 @@ import { CommonDirectivesModule } from 'core/common-directives';
 import { Dialog } from 'core/dialogs';
 import { RestModule } from 'core/rest';
 
+import { PipesModule } from '../shared/common-pipes';
+
 import { TypeEditorDialog } from './editor/type-dialog';
 import { TypeComponent } from './type.component';
 import { TypeService } from './type.service';
@@ -19,6 +21,7 @@ import { TypeService } from './type.service';
         RestModule.for('/api/hunt/subtypes'),
         CommonDialogsModule,
         FormsModule,
+        PipesModule,
     ],
     declarations: [
         TypeComponent,

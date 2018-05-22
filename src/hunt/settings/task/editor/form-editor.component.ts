@@ -1,16 +1,18 @@
-import {Location} from '@angular/common';
-import {Component} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { Location } from '@angular/common';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import {validate} from 'class-validator';
+import { validate } from 'class-validator';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
-import {CommonDialog} from 'core/common-dialogs';
-import {EditMode} from 'core/constants';
+import { CommonDialog } from 'core/common-dialogs';
+import { EditMode } from 'core/constants';
 
-import {FormService} from '../form.service';
-import {Ban, ReviewType, TaskForm} from '../shared/form.model';
+import { LevelList, TypeList } from '../../shared/constants';
+
+import { FormService } from '../form.service';
+import { TaskForm } from '../shared/form.model';
 import './form-editor.model';
 
 @Component({
@@ -20,8 +22,8 @@ import './form-editor.model';
 export class FormEditorComponent {
     editMode: EditMode;
     form: TaskForm;
-    types = ReviewType;
-    bans = Ban;
+    types = TypeList;
+    bans = LevelList;
 
     constructor(
         private service: FormService,

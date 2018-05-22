@@ -1,6 +1,6 @@
 import { Pipe } from '@angular/core';
 
-import { ReviewType, typeLabels } from './constants';
+import { ReviewType, typeLabels } from '../constants';
 
 @Pipe({name: 'reviewType'})
 export class ReviewTypePipe {

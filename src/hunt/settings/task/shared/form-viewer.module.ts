@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { CommonDirectivesModule } from 'core/common-directives';
 
-import { PipesModule } from './common-pipes';
+import { PipesModule } from '../../shared/common-pipes';
 import { FormViewerComponent } from './form-viewer.component';
 
 @NgModule({

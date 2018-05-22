@@ -20,7 +20,7 @@
                 <td>{{i + 1}}</td>
                 <td>{{type.parentName}}</td>
                 <td>{{type.name}}</td>
-                <td>{{type.level}}</td>
+                <td><span *ngIf="type.level">{{type.level | level: 'text'}}</span></td>
                 <td>{{type.period}}</td>
                 <td>{{type.enabled}}</td>
             </tr>

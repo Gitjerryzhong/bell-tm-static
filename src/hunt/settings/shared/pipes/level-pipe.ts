@@ -1,6 +1,6 @@
 import { Pipe } from '@angular/core';
 
-import { Level, levelLabels } from './constants';
+import { Level, levelLabels } from '../constants';
 
 @Pipe({name: 'level'})
 export class LevelPipe {

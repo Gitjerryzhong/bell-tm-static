@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { BaseDialog } from 'core/dialogs';
 
-import { Level, Type } from '../type.model';
+import { LevelList } from '../../shared/constants';
+
+import { Type } from '../type.model';
 import { TypeService } from '../type.service';
 
 @Component({
@@ -14,7 +16,7 @@ import { TypeService } from '../type.service';
 })
 export class TypeEditorDialog extends BaseDialog {
     form: Type;
-    levels = Level;
+    levels = LevelList;
     parentTypes: any[];
     pending = true;
 

@@ -8,7 +8,7 @@ import { CommonDirectivesModule } from 'core/common-directives';
 import { Dialog } from 'core/dialogs';
 import { RestModule } from 'core/rest';
 
-import { PipesModule } from './shared/common-pipes';
+import { PipesModule } from '../shared/common-pipes';
 import { FormViewerModule } from './shared/form-viewer.module';
 
 import { FormEditorComponent } from './editor/form-editor.component';
