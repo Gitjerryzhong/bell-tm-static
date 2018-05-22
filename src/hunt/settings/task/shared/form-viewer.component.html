@@ -17,11 +17,11 @@
         </div>
         <div class="form-group col-3">
             <label class="control-label">审核类型</label>
-            <div>{{vm.type}}</div>
+            <div>{{vm.type |reviewType: 'text'}}</div>
         </div>
         <div class="form-group col-3">
             <label class="control-label">限制条件</label>
-            <div>{{vm.ban}}</div>
+            <div><span *ngIf="vm.ban">{{vm.ban |level: 'text'}}在研</span></div>
         </div>
     </div>
     <div class="row">

@@ -21,8 +21,8 @@
                 <td class="taskTitle"><a [routerLink]="['/',task.id]">{{task.title}}</a></td>
                 <td>{{task.startDate}}</td>
                 <td>{{task.endDate}}</td>
-                <td><label class="badge" [ngClass]="class">{{task.type | reviewTypeText}}</label></td>
-                <td>{{task.ban}}</td>
+                <td><label class="badge" ngClass="{{task.type | reviewType: 'class'}}">{{task.type | reviewType: 'text'}}</label></td>
+                <td><span *ngIf="task.ban">{{task.ban | level: 'text'}}在研</span></td>
             </tr>
         </ng-template>
     </tbody>
