@@ -66,4 +66,5 @@ module.exports = {
     'hunt/settings/type':                      './src/hunt/settings/type/main.ts',
     'dualdegree/admin/finder':                 './src/dualdegree/award/application/finder/main.ts',
     'hunt/settings/task':                      './src/hunt/settings/task/main.ts',
+    'hunt/application/form':                   './src/hunt/project/application/form/main.ts',
 };

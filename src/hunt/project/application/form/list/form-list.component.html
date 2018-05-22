@@ -1,0 +1,33 @@
+<div class="btn-toolbar">
+    <div class="btn-group ml-auto">
+        <button class="btn btn-primary" routerLink="/editor">新建</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>项目名称</th>
+            <th>等级</th>
+            <th>项目类型</th>
+            <th>项目来源</th>
+            <th>申请日期</th>
+            <th>建设情况</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template ngFor let-item [ngForOf]="list" let-i="index">
+            <tr>
+                <td>{{i + 1}}</td>
+                <td><a [routerLink]="['/',item.id]">{{item.name}}</a></td>
+                <td>{{item.level}}</td>
+                <td>{{item.subtype}}</td>
+                <td>{{item.origin}}</td>
+                <td>{{item.dateCreated}}</td>
+                <td>{{item.status}}</td>
+                <td></td>
+            </tr>
+        </ng-template>
+    </tbody>
+</table>
