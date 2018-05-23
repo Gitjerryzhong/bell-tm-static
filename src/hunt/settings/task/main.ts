@@ -9,7 +9,7 @@ import { Dialog } from 'core/dialogs';
 import { RestModule } from 'core/rest';
 
 import { PipesModule } from '../shared/common-pipes';
-import { FormViewerModule } from './shared/form-viewer.module';
+import { TaskFormViewerModule } from './shared/form-viewer.module';
 
 import { FormEditorComponent } from './editor/form-editor.component';
 import { BatchRoutingModule } from './form-routing.module';
@@ -23,7 +23,7 @@ import { ListComponent } from './list/form-list.component';
         BrowserModule,
         FormsModule,
         RestModule.for('/api/hunt/tasks'),
-        FormViewerModule,
+        TaskFormViewerModule,
         CommonDialogsModule,
         CommonDirectivesModule,
         BatchRoutingModule,

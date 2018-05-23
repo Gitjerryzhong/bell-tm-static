@@ -1,4 +1,4 @@
-export class Project {
+export class ProjectForm {
     id: number;
     principalId: string;
     principalName: string;

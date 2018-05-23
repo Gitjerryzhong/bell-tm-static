@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
-    selector: 'form-viewer',
+    selector: 'task-form-viewer',
     styleUrls: ['form-viewer.component.scss'],
     templateUrl: 'form-viewer.component.html',
 })

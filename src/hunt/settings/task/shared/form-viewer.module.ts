@@ -19,4 +19,4 @@ import { FormViewerComponent } from './form-viewer.component';
         FormViewerComponent,
     ],
 })
-export class FormViewerModule {}
+export class TaskFormViewerModule {}

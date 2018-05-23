@@ -69,9 +69,8 @@ export class FormEditorComponent {
     validate(): string[] {
         const validation: string[] = [];
         if (this.isEmpty(this.form.title) ||
-            this.isEmpty(this.form.content) ||
-            this.isEmpty(this.form.remind)) {
-                validation.push('请检查标题、内容、专家注意事项等是否为空！');
+            this.isEmpty(this.form.content)) {
+                validation.push('请检查标题、内容等是否为空！');
         }
         if (!this.isDate(this.form.startDate)) {
             validation.push('申请起始日期输入不正确！');

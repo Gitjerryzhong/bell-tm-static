@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ProjectFormService} from '../form.service';
-import { Project } from '../shared/form.model';
+import { ProjectForm } from '../shared/form.model';
 
 @Component({
     selector: 'project-list',
@@ -9,7 +9,7 @@ import { Project } from '../shared/form.model';
 })
 
 export class ProjectListComponent {
-    list: Project[];
+    list: ProjectForm[];
 
     constructor(private service: ProjectFormService) {
         this.service.loadList().subscribe(dto => this.loadData(dto));
@@ -17,7 +17,7 @@ export class ProjectListComponent {
 
     loadData(dto: any[]) {
         this.list = dto.map(data => {
-            const project = new Project(data);
+            const project = new ProjectForm(data);
             return project;
         });
     }

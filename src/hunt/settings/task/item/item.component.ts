@@ -7,7 +7,7 @@ import {FormService} from '../form.service';
 import {TaskForm} from '../shared/form.model';
 
 @Component({
-    selector: 'award-item',
+    selector: 'task-item',
     templateUrl: 'item.component.html',
 })
 export class ItemComponent {

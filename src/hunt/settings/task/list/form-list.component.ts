@@ -4,7 +4,7 @@ import {FormService} from '../form.service';
 import {TaskForm} from '../shared/form.model';
 
 @Component({
-    selector: 'award-list',
+    selector: 'task-list',
     styleUrls: ['form-list.component.scss'],
     templateUrl: 'form-list.component.html',
 })

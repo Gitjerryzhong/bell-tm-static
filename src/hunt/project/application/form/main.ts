@@ -6,10 +6,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CommonDirectivesModule } from 'core/common-directives';
 import { RestModule } from 'core/rest';
 
+import { PipesModule } from '../../../settings/shared/common-pipes';
+
 import { RoutingModule } from './form-routing.module';
 import { ProjectViewComponent } from './form.component';
 import { ProjectFormService } from './form.service';
 import { ProjectListComponent } from './list/form-list.component';
+import { TaskModule } from './reviewtask/task.module';
 
 @NgModule({
     imports: [
@@ -18,6 +21,8 @@ import { ProjectListComponent } from './list/form-list.component';
         CommonDirectivesModule,
         RestModule.for('/api/hunt/teachers/${userId}/projects'),
         RoutingModule,
+        PipesModule,
+        TaskModule,
     ],
     declarations: [
         ProjectViewComponent,
@@ -25,6 +30,7 @@ import { ProjectListComponent } from './list/form-list.component';
     ],
     providers: [
         ProjectFormService,
+        {provide: 'REVIEWTASK_API_URL', useValue: '/api/hunt/tasks'},
     ],
     bootstrap: [ProjectViewComponent],
 })
