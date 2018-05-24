@@ -24,8 +24,14 @@ export class TypeComponent {
     }
 
     open() {
-        this.dialog.open(TypeEditorDialog).then(result => {
+        this.dialog.open(TypeEditorDialog, {}).then(result => {
             this.service.save(null, result).subscribe(() => this.loadData());
+        });
+    }
+
+    edit(value: Type) {
+        this.dialog.open(TypeEditorDialog, value).then(result => {
+            this.service.update(result.id, result).subscribe(() => this.loadData());
         });
     }
 }

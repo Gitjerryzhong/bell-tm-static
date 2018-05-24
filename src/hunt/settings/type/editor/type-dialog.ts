@@ -22,15 +22,6 @@ export class TypeEditorDialog extends BaseDialog {
 
     constructor(private service: TypeService) {
         super();
-        this.form = new Type({});
-        this.service.loadParentTypes().subscribe(dto => {
-            this.parentTypes = dto;
-            if (this.parentTypes && this.parentTypes.length) {
-                this.parentTypeSelected(this.parentTypes[0]);
-            } else {
-                this.form.parentName = '';
-            }
-        });
     }
 
     parentTypeSelected(parentType: any) {
@@ -45,6 +36,17 @@ export class TypeEditorDialog extends BaseDialog {
     }
 
     protected onOpening(): Observable<any> {
+        this.form = new Type(this.options);
+        this.service.loadParentTypes().subscribe(dto => {
+            this.parentTypes = dto;
+            if (this.options === {}) {
+                if (this.parentTypes && this.parentTypes.length) {
+                    this.parentTypeSelected(this.parentTypes[0]);
+                } else {
+                    this.form.parentName = '';
+                }
+            }
+        });
         return null;
     }
 

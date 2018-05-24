@@ -33,8 +33,8 @@ export const TypeList = [
 ];
 
 export const LevelList = [
-    {label: '校级在研', value: 'UNIVERSITY'},
-    {label: '市级在研', value: 'CITY'},
-    {label: '省级在研', value: 'PROVINCE'},
-    {label: '国家级在研', value: 'NATION'},
+    {label: '校级', value: 'UNIVERSITY'},
+    {label: '市级', value: 'CITY'},
+    {label: '省级', value: 'PROVINCE'},
+    {label: '国家级', value: 'NATION'},
 ];

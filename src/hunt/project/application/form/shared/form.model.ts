@@ -1,3 +1,31 @@
+export const Titles = [
+    '教授',
+    '副教授',
+    '讲师',
+    '助教',
+    '其他正高级',
+    '其他副高级',
+    '其他中级',
+    '其他初级',
+    '未评级',
+];
+
+export const Offices = [
+    '校长',
+    '副校长',
+    '处长',
+    '副处长',
+    '院长/部长/主任',
+    '副院长/副部长/副主任',
+    '系主任/专业负责人',
+    '院长助理/部长助理',
+    '实验室负责人',
+    '其他',
+    '无',
+];
+
+export const Degrees = ['大专', '本科', '硕士', '博士'];
+
 export class ProjectForm {
     id: number;
     principalId: string;
@@ -21,6 +49,7 @@ export class ProjectForm {
     members: string;
     content: string;
     achievements: string;
+    memberList: string[];
 
     constructor(dto: any) {
         this.id = dto.id;
@@ -45,5 +74,6 @@ export class ProjectForm {
         this.members = dto.members;
         this.content = dto.content;
         this.achievements = dto.achievements;
+        this.memberList = this.members ? this.members.split(';') : new Array(6).fill('');
     }
 }

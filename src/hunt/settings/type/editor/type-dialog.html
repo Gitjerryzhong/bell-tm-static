@@ -4,15 +4,41 @@
             <form-field label="类别名称">
                 <input type="text" name="name" class="form-control" [(ngModel)]="form.name" placeholder="输入类别名称" />
             </form-field>
-            <form-field label="项目等级">
-                <select name="level" class="form-control" [(ngModel)]="form.level">
-                    <option *ngFor="let level of levels" [ngValue]="level.value">
-                        {{level.label}}
-                    </option>
-                </select>
-            </form-field>
-            <form-field label="周期">
-                <input type="number" name="period" class="form-control" [(ngModel)]="form.period" placeholder="建设周期" />
+            <form-field label="周期（年）">
+                <div class="row">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">校级</span>
+                                <input class="form-control" type="number" name="periodOfUniversity" [(ngModel)]="form.periodOfUniversity" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">市级</span>
+                                <input class="form-control" type="number" name="periodOfCity" [(ngModel)]="form.periodOfCity" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">省级</span>
+                                <input class="form-control" type="number" name="periodOfProvince" [(ngModel)]="form.periodOfProvince" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">国家级</span>
+                                <input class="form-control" type="number" name="periodOfNation" [(ngModel)]="form.periodOfNation" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form-field>
             <form-field label="是否屏蔽">
                 <input type="checkbox" name="enabled" style="margin-top: .75rem;" [(ngModel)]="form.enabled"/>

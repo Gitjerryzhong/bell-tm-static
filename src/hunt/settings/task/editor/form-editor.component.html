@@ -37,7 +37,7 @@
                 <select name="ban" class="form-control" [(ngModel)]="form.ban">
                     <option value="">不限制</option>
                     <option *ngFor="let item of bans" [ngValue]="item.value">
-                        {{ item.label }}
+                        {{ item.label }}在研
                     </option>
                 </select>
             </div>

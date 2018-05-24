@@ -9,7 +9,6 @@
             <th>序号</th>
             <th>主类</th>
             <th>类别名称</th>
-            <th>等级</th>
             <th>周期(年)</th>
             <th>屏蔽</th>
         </tr>
@@ -19,9 +18,12 @@
             <tr>
                 <td>{{i + 1}}</td>
                 <td>{{type.parentName}}</td>
-                <td>{{type.name}}</td>
-                <td><span *ngIf="type.level">{{type.level | level: 'text'}}</span></td>
-                <td>{{type.period}}</td>
+                <td><a href="#" (click)="edit(type)">{{type.name}}</a></td>
+                <td><span *ngIf="type.periodOfUniversity"class="mr-2">校级：{{type.periodOfUniversity}} </span>
+                    <span *ngIf="type.periodOfCity" class="mr-2">市级：{{type.periodOfCity}} </span>
+                    <span *ngIf="type.periodOfProvince" class="mr-2">省级：{{type.periodOfProvince}} </span>
+                    <span *ngIf="type.periodOfNation" class="mr-2">国家级：{{type.periodOfNation}} </span>
+                </td>
                 <td>{{type.enabled}}</td>
             </tr>
         </ng-template>

@@ -8,6 +8,7 @@ import { RestModule } from 'core/rest';
 
 import { PipesModule } from '../../../settings/shared/common-pipes';
 
+import { ProjectFormEditorComponent } from './editor/form-editor.component';
 import { RoutingModule } from './form-routing.module';
 import { ProjectViewComponent } from './form.component';
 import { ProjectFormService } from './form.service';
@@ -27,6 +28,7 @@ import { TaskModule } from './reviewtask/task.module';
     declarations: [
         ProjectViewComponent,
         ProjectListComponent,
+        ProjectFormEditorComponent,
     ],
     providers: [
         ProjectFormService,

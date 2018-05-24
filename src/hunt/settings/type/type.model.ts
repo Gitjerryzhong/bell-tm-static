@@ -1,29 +1,38 @@
 import { constants } from 'zlib';
 
 export class Type {
+    id: number;
     parentId: number;
     parentName: string;
     name: string;
-    level: string;
-    period: number;
+    periodOfUniversity: number;
+    periodOfCity: number;
+    periodOfProvince: number;
+    periodOfNation: number;
     enabled: boolean;
 
     constructor(dto: any) {
+        this.id = dto.id;
         this.parentId = dto.parentId;
         this.parentName = dto.parentName;
         this.name = dto.name;
-        this.level = dto.level;
-        this.period = dto.period;
+        this.periodOfUniversity = dto.periodOfUniversity;
+        this.periodOfCity = dto.periodOfCity;
+        this.periodOfProvince = dto.periodOfProvince;
+        this.periodOfNation = dto.periodOfNation;
         this.enabled = dto.enabled;
     }
 
     toServerDto(): any {
         return {
+            id: this.id,
             parentId: this.parentId,
             parentName: this.parentName,
-            level: this.level,
+            periodOfUniversity: this.periodOfUniversity,
+            periodOfCity: this.periodOfCity,
+            periodOfProvince: this.periodOfProvince,
+            periodOfNation: this.periodOfNation,
             name: this.name,
-            period: this.period,
             enabled: this.enabled,
         };
     }
