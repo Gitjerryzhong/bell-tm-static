@@ -5,7 +5,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {CommonDirectivesModule} from 'core/common-directives';
 import {RestModule} from 'core/rest';
 
-import {AgreementFormViewerComponent} from '../shared/form-viewer.component';
+import {AgreementSharedModule} from '../shared/agreement-shared.module';
 
 import {AgreementItemComponent} from './item/item.component';
 import {AgreementListComponent} from './list/form-list.component';
@@ -19,9 +19,9 @@ import {AgreementPublicService} from './public.service';
         CommonDirectivesModule,
         RestModule.for('/api/dualdegree/agreements'),
         AgreementRoutingModule,
+        AgreementSharedModule,
     ],
     declarations: [
-        AgreementFormViewerComponent,
         AgreementItemComponent,
         AgreementListComponent,
         PublicViewComponent,
