@@ -24,7 +24,7 @@ import { AgreementListComponent } from './list/form-list.component';
     imports: [
         BrowserModule,
         FormsModule,
-        RestModule.for('/api/dualdegree/agreements'),
+        RestModule.for('/api/dualdegree/users/${userId}/agreements'),
         CommonDialogsModule,
         CommonDirectivesModule,
         AgreementRoutingModule,

@@ -17,7 +17,7 @@ import {AgreementPublicService} from './public.service';
     imports: [
         BrowserModule,
         CommonDirectivesModule,
-        RestModule.for('/api/dualdegree/agreement-publics'),
+        RestModule.for('/api/dualdegree/agreements'),
         AgreementRoutingModule,
     ],
     declarations: [
