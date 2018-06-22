@@ -4,13 +4,16 @@
             <form-field label="专业英文名">
                 <input class="form-control" name="nameEn" type="text" [(ngModel)]="nameEn" placeholder="专业英文名" />
             </form-field>
-            <form-field label="衔接(中)">
-                <input class="form-control" name="majorOptionsCn" type="text" [(ngModel)]="majorOptionsCn" placeholder="外国大学可衔接专业（中文）" />
+            <form-field label="专业中文名">
+                <input class="form-control" name="nameCn" type="text" [(ngModel)]="nameCn" placeholder="专业中文名" />
+            </form-field>
+            <form-field label="获得学位">
+                <input class="form-control" name="bachelor" type="text" [(ngModel)]="bachelor" placeholder="获得学位" />
             </form-field>
         </form>
     </modal-body>
     <modal-footer>
         <button modalCancel>取消</button>
-        <button type="button" class="btn btn-secondary" (click)="ok()" [disabled]="!majorSelected">确定</button>
+        <button type="button" class="btn btn-secondary" (click)="ok()">确定</button>
     </modal-footer>
 </modal-dialog>

@@ -4,6 +4,7 @@ import { UniversityFormService } from '../form.service';
 
 @Component({
     selector: 'university-list',
+    styleUrls: ['form-list.component.scss'],
     templateUrl: 'form-list.component.html',
 })
 export class UniversityListComponent {
@@ -12,11 +13,11 @@ export class UniversityListComponent {
     majors: any[];
 
     constructor(private service: UniversityFormService) {
-        this.service.loadList(this.service.filters).subscribe(dto => this.loadData(dto));
+        this.service.loadList().subscribe(dto => this.loadData(dto));
     }
 
     loadData(dto: any) {
-        this.universities = dto.list;
+        this.universities = dto;
     }
 
     orderBy(key: string) {

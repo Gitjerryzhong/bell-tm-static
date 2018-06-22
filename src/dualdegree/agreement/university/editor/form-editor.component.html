@@ -15,8 +15,8 @@
                 <input class="form-control" name="nameEn" type="text" [(ngModel)]="form.nameEn" placeholder="大学英文名称" />
             </div>
             <div class="form-group col-3">
-                <label class="control-label">英文缩写</label>
-                <input class="form-control" name="id" type="text" [(ngModel)]="form.id" placeholder="大学英文名称缩写" />
+                <label class="control-label">英文缩写(大写字母)</label>
+                <input class="form-control" name="shortName" type="text" [(ngModel)]="form.shortName" placeholder="参考官网或取首字母组合" />
             </div>
         </div>
         <div class="row">
@@ -48,7 +48,6 @@
                             <th>英文名缩写</th>
                             <th>专业中文名</th>
                             <th>学位</th>
-                            <th>删除</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +58,6 @@
                                 <td>{{major.id}}</td>
                                 <td>{{major.nameCn}}</td>
                                 <td>{{major.bachelor}}</td>
-                                <td></td>
                             </tr>
                         </ng-template>
                     </tbody>

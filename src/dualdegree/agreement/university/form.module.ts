@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { CommonDialogsModule } from 'core/common-dialogs';
 import { CommonDirectivesModule } from 'core/common-directives';
@@ -46,6 +45,4 @@ import { UniversityListComponent } from './list/form-list.component';
         UniversityViewComponent,
     ],
 })
-export class MainModule { }
-
-platformBrowserDynamic().bootstrapModule(MainModule);
+export class UniversityModule { }

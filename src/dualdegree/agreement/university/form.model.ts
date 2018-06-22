@@ -1,9 +1,10 @@
 export class UniversityForm {
-    id: string;
+    id: number;
     nameCn: string;
     regionId: number;
     regionName: string;
     nameEn: string;
+    shortName: string;
     items: Major[];
 
     constructor(dto: any) {
@@ -12,6 +13,7 @@ export class UniversityForm {
         this.regionId = dto.regionId;
         this.regionName = dto.regionName;
         this.nameEn = dto.nameEn;
+        this.shortName = dto.shortName;
         this.items = dto.items.map((itemDto: any) => new Major(this, itemDto));
     }
 }
@@ -19,8 +21,9 @@ export class UniversityForm {
 /* tslint:disable:max-classes-per-file */
 export class Major {
     form: UniversityForm;
-    id: string;
+    id: number;
     nameEn: string;
+    shortName: string;
     nameCn: string;
     bachelor: string;
 
@@ -28,6 +31,7 @@ export class Major {
         this.form = form;
         this.id = dto.id;
         this.nameEn = dto.nameEn;
+        this.shortName = dto.shortName;
         this.nameCn = dto.nameCn;
         this.bachelor = dto.bachelor;
     }

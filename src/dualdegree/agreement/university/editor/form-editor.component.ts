@@ -43,7 +43,6 @@ export class UniversityFormEditorComponent {
         this.form = new UniversityForm(dto.form);
         this.form.removedItems = [];
         this.regions = dto.regions;
-        this.majors = dto.majors.filter((major: any) => major.enabled);
     }
 
     goBack(): void {
@@ -59,8 +58,11 @@ export class UniversityFormEditorComponent {
         if (this.isEmpty(this.form.nameCn) ||
             this.isEmpty(this.form.nameEn) ||
             this.isEmpty(this.form.regionId) ||
-            this.isEmpty(this.form.id)) {
+            this.isEmpty(this.form.shortName)) {
                 validate.push('请检国外大学中文名、英文名、英文名缩写、项目等是否为空');
+        }
+        if (this.form.shortName && this.form.shortName.length > 10) {
+            validate.push('大学英文名缩写长度不能超过10');
         }
         return validate;
     }
@@ -94,6 +96,8 @@ export class UniversityFormEditorComponent {
         const its = this.form.items.map(item => item.id);
         this.dialog.open(MajorDialog).then(result => {
             const item = new Major(this.form, result);
+            console.log(result);
+            console.log(item);
             this.form.addItem(item);
         });
     }

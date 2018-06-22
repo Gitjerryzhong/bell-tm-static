@@ -38,7 +38,7 @@ UniversityForm.prototype.removeItem = function(this: UniversityForm, item: Major
 
 UniversityForm.prototype.toServerDto = function(this: UniversityForm): any {
     return {
-        id: this.id,
+        shortName: this.shortName.toUpperCase(),
         nameCn: this.nameCn,
         regionId: this.regionId,
         nameEn: this.nameEn,
