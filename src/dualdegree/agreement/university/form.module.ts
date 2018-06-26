@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { CommonDialogsModule } from 'core/common-dialogs';
-import { CommonDirectivesModule } from 'core/common-directives';
-import { Dialog } from 'core/dialogs';
-import { RestModule } from 'core/rest';
+import {CommonDialogsModule} from 'core/common-dialogs';
+import {CommonDirectivesModule} from 'core/common-directives';
+import {Dialog} from 'core/dialogs';
+import {RestModule} from 'core/rest';
 
-import { MajorGroupPipe } from '../../shared/pipes/major-group';
+import {MajorGroupPipe} from '../../shared/pipes/major-group';
 
-import { UniversityFormEditorComponent } from './editor/form-editor.component';
-import { MajorDialog } from './editor/major-item/major.dialog';
-import { UniversityRoutingModule } from './form-routing.module';
-import { UniversityViewComponent } from './form.component';
-import { UniversityFormService } from './form.service';
-import { UniversityItemComponent } from './item/item.component';
-import { UniversityListComponent } from './list/form-list.component';
+import {UniversityFormEditorComponent} from './editor/form-editor.component';
+import {MajorDialog} from './editor/major-item/major.dialog';
+import {UniversityRoutingModule} from './form-routing.module';
+import {UniversityViewComponent} from './form.component';
+import {UniversityFormService} from './form.service';
+import {UniversityItemComponent} from './item/item.component';
+import {UniversityListComponent} from './list/form-list.component';
+import {UniversitySharedModule} from './shared/university-shared.module';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { UniversityListComponent } from './list/form-list.component';
         CommonDialogsModule,
         CommonDirectivesModule,
         UniversityRoutingModule,
+        UniversitySharedModule,
     ],
     declarations: [
         UniversityFormEditorComponent,

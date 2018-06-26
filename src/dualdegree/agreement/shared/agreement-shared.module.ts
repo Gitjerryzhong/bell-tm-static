@@ -9,6 +9,7 @@ import {Dialog } from 'core/dialogs';
 import {AgreementFilterDialog} from './filter.dialog';
 import {AgreementViewService} from './filter.service';
 import {AgreementFormViewerComponent} from './form-viewer.component';
+import {UniversitySelectComponent} from './university-select-component';
 @NgModule({
     imports: [
         CommonModule,
@@ -19,6 +20,7 @@ import {AgreementFormViewerComponent} from './form-viewer.component';
     declarations: [
         AgreementFormViewerComponent,
         AgreementFilterDialog,
+        UniversitySelectComponent,
     ],
     entryComponents: [
         AgreementFilterDialog,
@@ -30,6 +32,7 @@ import {AgreementFormViewerComponent} from './form-viewer.component';
     exports: [
         AgreementFormViewerComponent,
         AgreementFilterDialog,
+        UniversitySelectComponent,
     ],
 })
 export class AgreementSharedModule {}

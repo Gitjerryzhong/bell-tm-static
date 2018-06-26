@@ -7,6 +7,7 @@ export class AgreementForm {
     universityCn: string;
     memo: string;
     items: AgreementItem[];
+    university: any;
 
     constructor(dto: any) {
         this.id = dto.id;
@@ -17,6 +18,7 @@ export class AgreementForm {
         this.universityCn = dto.universityCn;
         this.memo = dto.memo;
         this.items = dto.items.map((itemDto: any) => new AgreementItem(this, itemDto));
+        this.university = dto.university;
     }
 }
 
@@ -28,8 +30,7 @@ export class AgreementItem {
     subjectName: string;
     departmentId: string;
     departmentName: string;
-    majorOptions: string;
-    majorOptionsCn: string;
+    coMajors: any[];
 
     constructor(form: AgreementForm, dto: any) {
         this.form = form;
@@ -38,8 +39,7 @@ export class AgreementItem {
         this.subjectName = dto.subjectName;
         this.departmentId = dto.departmentId;
         this.departmentName = dto.departmentName;
-        this.majorOptions = dto.majorOptions;
-        this.majorOptionsCn = dto.majorOptionsCn;
+        this.coMajors = dto.coMajors;
     }
 
     equalsTo(other: AgreementItem): boolean {

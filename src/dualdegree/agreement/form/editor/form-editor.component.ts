@@ -9,6 +9,7 @@ import {EditMode} from 'core/constants';
 import {Dialog} from 'core/dialogs';
 
 import {AgreementForm, AgreementItem} from '../../shared/form.model';
+import {UniversityForm} from '../../university/form.model';
 import {AgreementFormService} from '../form.service';
 import './form-editor.model';
 import {MajorDialog} from './major-item/major.dialog';
@@ -22,6 +23,7 @@ export class AgreementFormEditorComponent {
     form: AgreementForm;
     regions: any[];
     majors: any[];
+    universities: UniversityForm[];
 
     constructor(
         private service: AgreementFormService,
@@ -44,6 +46,7 @@ export class AgreementFormEditorComponent {
         this.form.removedItems = [];
         this.regions = dto.regions;
         this.majors = dto.majors.filter((major: any) => major.enabled);
+        this.universities = dto.universities;
     }
 
     goBack(): void {
@@ -57,10 +60,8 @@ export class AgreementFormEditorComponent {
     validate(): string[] {
         const validate: string[] = [];
         if (this.isEmpty(this.form.agreementName) ||
-            this.isEmpty(this.form.universityEn) ||
-            this.isEmpty(this.form.regionId) ||
-            this.isEmpty(this.form.universityCn)) {
-                validate.push('请检查协议名称、国外大学（中）、国外大学（英）、项目等是否为空');
+            this.isEmpty(this.form.university)) {
+                validate.push('请检查协议名称、合作大学等是否为空');
         }
         return validate;
     }
@@ -91,10 +92,17 @@ export class AgreementFormEditorComponent {
     }
 
     addItem() {
-        const its = this.form.items.map(item => item.id);
-        this.dialog.open(MajorDialog, {majors: this.majors, items: its}).then(result => {
-            const item = new AgreementItem(this.form, result);
-            this.form.addItem(item);
+        this.service.getCoMajors(this.form.university.id).subscribe(dto => {
+            const its = this.form.items.map(item => item.id);
+            this.dialog.open(MajorDialog, {majors: this.majors, items: its, coMajors: dto}).then(result => {
+                const item = new AgreementItem(this.form, result);
+                this.form.addItem(item);
+            });
         });
+    }
+
+    onUniversitySelected(university: any): void {
+        this.form.university = university;
+        this.form.items = [];
     }
 }

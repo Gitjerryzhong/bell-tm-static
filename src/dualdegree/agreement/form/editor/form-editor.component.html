@@ -14,44 +14,52 @@
                 <label class="control-label">协议名称</label>
                 <input class="form-control" name="agreementName" type="text" [(ngModel)]="form.agreementName" placeholder="协议名称" />
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3" *ngIf="form.university">
                 <label class="control-label">项目类别</label>
-                <select name="region" class="form-control" [(ngModel)]="form.regionId">
-                    <option value="" disabled>请选择</option>
-                    <option *ngFor="let item of regions" [ngValue]="item.id">
-                        {{ item.name }}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label class="control-label">外国大学（中）</label>
-                <input class="form-control" name="universityCn" type="text" [(ngModel)]="form.universityCn" placeholder="外国大学名称（中文）" />
-            </div>
-            <div class="form-group col-md-6">
-                <label class="control-label">外国大学（英）</label>
-                <input class="form-control" name="universityEn" type="text" [(ngModel)]="form.universityEn" placeholder="外国大学名称（英文）" />
+                <p class="ml-2">{{form.university.region}}</p>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-9">
-                <label class="control-label">适用年级专业</label>
-                <span class="ml-2">
-                    <button class='btn btn-success btn-sm' (click)="addItem()">添加</button>
-                </span>
-                <div class="px-2 pt-2" style="overflow-y: scroll; border: solid 1px #ddd; height: 204px">
-                    <div class="form-check" *ngFor="let item of form.items">
-                        <label class="form-check-label">
-                            <span class="mr-3"><remove-item (click)="form.removeItem(item)"></remove-item></span>
-                            {{item.departmentName}} {{item.grade}} {{item.subjectName}} 衔接专业：{{item.majorOptions}} | {{item.majorOptionsCn}}
-                        </label>
-                    </div>
-                </div>
+                <label class="control-label">外国大学</label>
+                <university-select [universities]="universities" (selectUniversity)="onUniversitySelected($event)"></university-select>
+                <p class="ml-2" *ngIf="form.university">{{form.university.nameCn}}</p>
             </div>
             <div class="form-group col-md-3">
                 <label class="control-label">备注</label>
-                <textarea class="form-control" name="memo" rows="8" [(ngModel)]="form.memo" placeholder="备注"></textarea>
+                <textarea class="form-control" name="memo" rows="2" [(ngModel)]="form.memo" placeholder="备注"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="control-label">适用年级专业</label>
+                <span class="ml-2">
+                    <button class='btn btn-success btn-sm' (click)="addItem()" [disabled]="!form.university">添加</button>
+                </span>
+                <table class="table" style="font-size: 0.75rem;">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>学院</th>
+                            <th>年级</th>
+                            <th>国内专业</th>
+                            <th>衔接专业</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-template ngFor let-item [ngForOf]="form.items" let-i="index">
+                            <ng-container *ngFor="let coMajor of item.coMajors; let j = index">
+                                <tr>
+                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{i + 1}}</td>
+                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.departmentName}}</td>
+                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.grade}}</td>
+                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.subjectName}}</td>
+                                    <td>{{coMajor.nameEn}} {{coMajor.nameCn}} {{coMajor.bachelor}}</td>
+                                </tr>
+                            </ng-container>
+                        </ng-template>
+                    </tbody>
+                </table>
             </div>
         </div>
     </form>

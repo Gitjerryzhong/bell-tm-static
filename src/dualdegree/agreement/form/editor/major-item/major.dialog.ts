@@ -1,22 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, QueryList, ViewChildren} from '@angular/core';
 
-import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
 
+import {CheckboxSelectorComponent} from 'core/common-directives';
 import {BaseDialog} from 'core/dialogs';
 
 @Component({
     selector: 'major-dialog',
+    styleUrls: ['major.dialog.scss'],
     templateUrl: 'major.dialog.html',
 })
 export class MajorDialog extends BaseDialog {
+    @ViewChildren(CheckboxSelectorComponent) selectors: QueryList<CheckboxSelectorComponent>;
     majors: any[];
+    coMajors: any[];
     items: any[];
     departmentName: string;
     subjectName: string;
     grade: number;
-    majorOptions: string;
-    majorOptionsCn: string;
 
     constructor() {
         super();
@@ -33,14 +34,14 @@ export class MajorDialog extends BaseDialog {
     protected onOpening(): Observable<any> {
         this.items = this.options.items;
         this.majors = this.options.majors;
+        this.coMajors = this.options.coMajors;
         this.majors = this.majors.filter(data => !this.items.some(it => it === data.id));
         return null;
     }
 
     protected onConfirmed(): any {
         const majorItem = this.majorSelected;
-        majorItem.majorOptions = this.majorOptions;
-        majorItem.majorOptionsCn = this.majorOptionsCn;
+        majorItem.coMajors = this.selectors.filter(s => s.checked).map(s => s.data);
         return majorItem;
     }
 

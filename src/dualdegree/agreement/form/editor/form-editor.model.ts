@@ -39,9 +39,7 @@ AgreementForm.prototype.removeItem = function(this: AgreementForm, item: Agreeme
 AgreementForm.prototype.toServerDto = function(this: AgreementForm): any {
     return {
         agreementName: this.agreementName,
-        regionId: this.regionId,
-        universityCn: this.universityCn,
-        universityEn: this.universityEn,
+        universityId: this.university.id,
         addedItems: this.getAddedItems(),
         removedItems: this.id ? this.removedItems.map(it => it.id) : null,
         memo: this.memo,
@@ -51,7 +49,6 @@ AgreementForm.prototype.toServerDto = function(this: AgreementForm): any {
 AgreementForm.prototype.getAddedItems = function(this: AgreementForm): any[] {
     return this.items.map(it => ({
         id: it.id,
-        majorOptions: it.majorOptions,
-        majorOptionsCn: it.majorOptionsCn,
+        coMajors: it.coMajors.map(data => data.id),
     }));
 };

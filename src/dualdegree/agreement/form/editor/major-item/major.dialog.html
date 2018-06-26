@@ -25,12 +25,23 @@
                     </option>
                 </select>
             </form-field>
-            <form-field label="衔接(英)">
-                <input class="form-control" name="majorOptions" type="text" [(ngModel)]="majorOptions" placeholder="外国大学可衔接专业（英文）" />
-            </form-field>
-            <form-field label="衔接(中)">
-                <input class="form-control" name="majorOptionsCn" type="text" [(ngModel)]="majorOptionsCn" placeholder="外国大学可衔接专业（中文）" />
-            </form-field>
+            <div class="form-group">
+                <label class="control-label">可衔接专业</label>
+                <div class="px-2 pt-2" style="overflow-y: scroll; border: solid 1px #ddd; height: 204px">
+                    <table class="table" id="coMajor">
+                        <tbody>
+                            <ng-template ngFor let-item [ngForOf]="coMajors">
+                                <tr>
+                                    <td><checkbox-selector [data]="item"></checkbox-selector></td>
+                                    <td>{{item.nameEn}}</td>
+                                    <td>{{item.nameCn}}</td>
+                                    <td>{{item.bachelor}}</td>
+                                </tr>
+                            </ng-template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </form>
     </modal-body>
     <modal-footer>

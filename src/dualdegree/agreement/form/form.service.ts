@@ -20,4 +20,8 @@ export class AgreementFormService extends EditService {
             return this.create(form);
         }
     }
+
+    getCoMajors(id: number): Observable<any> {
+        return this.rest.get(`${this.api.list()}/cooperativeMajors?universityId=${id}`);
+    }
 }

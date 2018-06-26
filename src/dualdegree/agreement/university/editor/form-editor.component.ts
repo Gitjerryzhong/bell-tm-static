@@ -96,8 +96,6 @@ export class UniversityFormEditorComponent {
         const its = this.form.items.map(item => item.id);
         this.dialog.open(MajorDialog).then(result => {
             const item = new Major(this.form, result);
-            console.log(result);
-            console.log(item);
             this.form.addItem(item);
         });
     }

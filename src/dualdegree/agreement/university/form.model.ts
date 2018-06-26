@@ -11,7 +11,7 @@ export class UniversityForm {
         this.id = dto.id;
         this.nameCn = dto.nameCn;
         this.regionId = dto.regionId;
-        this.regionName = dto.regionName;
+        this.regionName = dto.region;
         this.nameEn = dto.nameEn;
         this.shortName = dto.shortName;
         this.items = dto.items.map((itemDto: any) => new Major(this, itemDto));

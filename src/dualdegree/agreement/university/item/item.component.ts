@@ -10,7 +10,6 @@ import {UniversityFormService} from '../form.service';
 })
 export class UniversityItemComponent {
     vm: UniversityForm;
-    items: any[];
 
     constructor(
         private route: ActivatedRoute,
@@ -19,7 +18,6 @@ export class UniversityItemComponent {
         const params = this.route.snapshot.params;
         this.service.loadItem(params['id']).subscribe(dto => {
             this.vm = new UniversityForm(dto);
-            this.items = dto.items;
         });
     }
 }
