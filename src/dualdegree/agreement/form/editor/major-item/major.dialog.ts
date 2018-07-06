@@ -1,54 +1,76 @@
-import {Component, QueryList, ViewChildren} from '@angular/core';
+import {Component} from '@angular/core';
 
+import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
 
-import {CheckboxSelectorComponent} from 'core/common-directives';
 import {BaseDialog} from 'core/dialogs';
 
+interface AgreementMajor {
+    departmentName: string;
+    subjectName: string;
+    startedGrade: number;
+    endedGrade: number;
+    coMajors: any[];
+}
 @Component({
     selector: 'major-dialog',
     styleUrls: ['major.dialog.scss'],
     templateUrl: 'major.dialog.html',
 })
 export class MajorDialog extends BaseDialog {
-    @ViewChildren(CheckboxSelectorComponent) selectors: QueryList<CheckboxSelectorComponent>;
     majors: any[];
     coMajors: any[];
     items: any[];
-    departmentName: string;
-    subjectName: string;
-    grade: number;
+    form: AgreementMajor;
 
     constructor() {
         super();
-    }
-
-    filterByGrade(grade: number) {
-        return (major: any) => major.grade === grade;
     }
 
     filterByDepartment(name: string) {
         return (major: any) => major.departmentName === name;
     }
 
+    check(item: any) {
+        item.checked = !item.checked;
+    }
+
+    isEmpty(option: any): boolean {
+        return _.isUndefined(option) || _.isNull(option);
+    }
+
+    validGrade(value: number, start = 2002, end = 9999): boolean {
+        return value > start && value < end;
+    }
+
     protected onOpening(): Observable<any> {
         this.items = this.options.items;
         this.majors = this.options.majors;
         this.coMajors = this.options.coMajors;
+        this.form = this.options.agreementMajor;
         this.majors = this.majors.filter(data => !this.items.some(it => it === data.id));
+        if (!this.isEmpty(this.form.coMajors)) {
+            this.coMajors.forEach(it => it.checked = this.form.coMajors.some(s => s.id === it.id));
+        }
         return null;
     }
 
     protected onConfirmed(): any {
         const majorItem = this.majorSelected;
-        majorItem.coMajors = this.selectors.filter(s => s.checked).map(s => s.data);
+        majorItem.startedGrade = this.form.startedGrade;
+        majorItem.endedGrade = this.form.endedGrade;
+        majorItem.coMajors = this.coMajors.filter(s => s.checked);
         return majorItem;
     }
 
     get majorSelected(): any {
-        const items = this.majors.filter(major => major.departmentName === this.departmentName
-            && major.grade === this.grade
-            && major.subjectName === this.subjectName);
+        if (this.isEmpty(this.form.startedGrade) || this.isEmpty(this.form.endedGrade) ||
+            !this.validGrade(this.form.startedGrade) || !this.validGrade(this.form.endedGrade)
+            || this.form.endedGrade < this.form.startedGrade) {
+            return null;
+        }
+        const items = this.majors.filter(major => major.departmentName === this.form.departmentName
+            && major.subjectName === this.form.subjectName);
         return items.length ? items[0] : null;
     }
 }

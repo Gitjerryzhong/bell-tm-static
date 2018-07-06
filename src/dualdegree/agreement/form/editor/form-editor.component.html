@@ -32,34 +32,23 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <label class="control-label">适用年级专业</label>
+                <label class="control-label">适用专业、起止年级以及衔接专业</label>
                 <span class="ml-2">
                     <button class='btn btn-success btn-sm' (click)="addItem()" [disabled]="!form.university">添加</button>
                 </span>
-                <table class="table" style="font-size: 0.75rem;">
-                    <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>学院</th>
-                            <th>年级</th>
-                            <th>国内专业</th>
-                            <th>衔接专业</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <ng-template ngFor let-item [ngForOf]="form.items" let-i="index">
-                            <ng-container *ngFor="let coMajor of item.coMajors; let j = index">
-                                <tr>
-                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{i + 1}}</td>
-                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.departmentName}}</td>
-                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.grade}}</td>
-                                    <td *ngIf="j == 0" [rowSpan]="item.coMajors.length">{{item.subjectName}}</td>
-                                    <td>{{coMajor.nameEn}} {{coMajor.nameCn}} {{coMajor.bachelor}}</td>
-                                </tr>
-                            </ng-container>
-                        </ng-template>
-                    </tbody>
-                </table>
+                <ul>
+                    <li *ngFor="let item of form.items">
+                        {{item.subjectName}} 适用起止年级：{{item.startedGrade}} —— {{item.endedGrade}}
+                        <span class="ml-2">
+                            <button class='btn btn-warning btn-sm' (click)="editItem(item)">编辑</button>
+                        </span>
+                        <ul>
+                            <li *ngFor="let major of item.coMajors">
+                                {{major.nameEn}}：{{major.nameCn}} {{major.bachelor}}
+                             </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </form>

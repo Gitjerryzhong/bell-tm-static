@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
-import * as _ from 'lodash';
-
-import {AgreementForm, AgreementItem} from '../../shared/form.model';
+import {AgreementForm} from '../../shared/form.model';
 import {AgreementFormService} from '../form.service';
 
 @Component({
@@ -15,7 +13,6 @@ export class AgreementItemComponent {
     items: any[];
 
     constructor(
-        private router: Router,
         private route: ActivatedRoute,
         private service: AgreementFormService,
     ) {

@@ -1,10 +1,6 @@
 export class AgreementForm {
     id: number;
     agreementName: string;
-    regionId: number;
-    regionName: string;
-    universityEn: string;
-    universityCn: string;
     memo: string;
     items: AgreementItem[];
     university: any;
@@ -12,12 +8,8 @@ export class AgreementForm {
     constructor(dto: any) {
         this.id = dto.id;
         this.agreementName = dto.agreementName;
-        this.regionId = dto.regionId;
-        this.regionName = dto.regionName;
-        this.universityEn = dto.universityEn;
-        this.universityCn = dto.universityCn;
         this.memo = dto.memo;
-        this.items = dto.items.map((itemDto: any) => new AgreementItem(this, itemDto));
+        this.items = dto.items.map((itemDto: any) => new AgreementItem(itemDto));
         this.university = dto.university;
     }
 }
@@ -26,16 +18,18 @@ export class AgreementForm {
 export class AgreementItem {
     form: AgreementForm;
     id: number;
-    grade: number;
+    startedGrade: number;
+    endedGrade: number;
     subjectName: string;
     departmentId: string;
     departmentName: string;
     coMajors: any[];
 
-    constructor(form: AgreementForm, dto: any) {
-        this.form = form;
+    constructor(dto: any) {
+        // this.form = form;
         this.id = dto.id;
-        this.grade = dto.grade;
+        this.startedGrade = dto.startedGrade;
+        this.endedGrade = dto.endedGrade;
         this.subjectName = dto.subjectName;
         this.departmentId = dto.departmentId;
         this.departmentName = dto.departmentName;

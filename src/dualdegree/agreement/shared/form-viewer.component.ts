@@ -27,8 +27,4 @@ export class AgreementFormViewerComponent {
     subjectLength(subjects: any[]): number {
         return _.chain(subjects).sumBy(subject => this.optionsLength(subject.options)).value();
     }
-
-    comment(option: any) {
-        this.service.getCn(option.agreementId, option.id).subscribe(dto => this.dialogs.confirm('中文名称', dto.majorOptionsCn));
-    }
 }

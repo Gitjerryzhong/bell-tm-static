@@ -27,7 +27,7 @@ export class AgreementFilterDialog extends BaseDialog {
     }
 
     protected onOpening(): Observable<any> {
-        this.majors = this.options.majors;
+        this.majors = this.options.majors.filter((m: any) => m.enabled);
         this.regions = this.options.regions;
         return null;
     }

@@ -11,6 +11,8 @@ import { MajorGroupPipe } from '../../shared/pipes/major-group';
 
 import { AgreementSharedModule } from '../shared/agreement-shared.module';
 
+import { AgreementCarryoutComponent } from './carryout/agreement-carryout-component';
+import { CarryoutService } from './carryout/agreement-carryout-service';
 import { AgreementFormEditorComponent } from './editor/form-editor.component';
 import { MajorDialog } from './editor/major-item/major.dialog';
 import { AgreementRoutingModule } from './form-routing.module';
@@ -36,10 +38,12 @@ import { AgreementListComponent } from './list/form-list.component';
         AgreementItemComponent,
         MajorGroupPipe,
         MajorDialog,
+        AgreementCarryoutComponent,
     ],
     providers: [
         Dialog,
         AgreementFormService,
+        CarryoutService,
     ],
     entryComponents: [
         MajorDialog,

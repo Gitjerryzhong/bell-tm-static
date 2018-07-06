@@ -21,9 +21,9 @@ import {MajorDialog} from './major-item/major.dialog';
 export class AgreementFormEditorComponent {
     editMode: EditMode;
     form: AgreementForm;
-    regions: any[];
     majors: any[];
     universities: UniversityForm[];
+    coMajors: any[];
 
     constructor(
         private service: AgreementFormService,
@@ -44,7 +44,6 @@ export class AgreementFormEditorComponent {
     onLoadData(dto: any) {
         this.form = new AgreementForm(dto.form);
         this.form.removedItems = [];
-        this.regions = dto.regions;
         this.majors = dto.majors.filter((major: any) => major.enabled);
         this.universities = dto.universities;
     }
@@ -93,16 +92,39 @@ export class AgreementFormEditorComponent {
 
     addItem() {
         this.service.getCoMajors(this.form.university.id).subscribe(dto => {
+            const agreementMajor = {};
+            this.coMajors = dto;
             const its = this.form.items.map(item => item.id);
-            this.dialog.open(MajorDialog, {majors: this.majors, items: its, coMajors: dto}).then(result => {
-                const item = new AgreementItem(this.form, result);
+            this.dialog.open(MajorDialog, {majors: this.majors, items: its, coMajors: dto, agreementMajor}).then(result => {
+                const item = new AgreementItem(result);
+                this.form.addItem(item);
+            });
+        });
+    }
+
+    editItem(itemForEdit: any) {
+        this.form.removeItem(itemForEdit);
+        this.service.getCoMajors(this.form.university.id).subscribe(dto => {
+            this.coMajors = dto;
+            const its = this.form.items.map(item => item.id);
+            this.dialog.open(MajorDialog,
+                {majors: this.majors, items: its, coMajors: this.coMajors, agreementMajor: itemForEdit},
+            ).then(result => {
+                const item = new AgreementItem(result);
                 this.form.addItem(item);
             });
         });
     }
 
     onUniversitySelected(university: any): void {
-        this.form.university = university;
-        this.form.items = [];
+        // 更换合作大学要清空所有协议专业
+        if (university && (!this.form.university || this.form.university.nameEn !== university.nameEn)) {
+            this.form.university = university;
+            this.form.items = [];
+        }
+    }
+
+    filterBySubject(name: string) {
+        return (major: any) => major.subjectName === name;
     }
 }

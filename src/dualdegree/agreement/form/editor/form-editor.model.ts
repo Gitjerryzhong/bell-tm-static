@@ -19,10 +19,8 @@ AgreementForm.prototype.addItem = function(this: AgreementForm, item: AgreementI
     const removedItem = this.removedItems.find(i => i.equalsTo(item));
     if (removedItem) {
         this.removedItems.splice(this.removedItems.indexOf(removedItem), 1);
-        this.items.push(removedItem);
-    } else {
-        this.items.push(item);
     }
+    this.items.push(item);
 };
 
 AgreementForm.prototype.removeItem = function(this: AgreementForm, item: AgreementItem): void {
@@ -49,6 +47,8 @@ AgreementForm.prototype.toServerDto = function(this: AgreementForm): any {
 AgreementForm.prototype.getAddedItems = function(this: AgreementForm): any[] {
     return this.items.map(it => ({
         id: it.id,
+        startedGrade: it.startedGrade,
+        endedGrade: it.endedGrade,
         coMajors: it.coMajors.map(data => data.id),
     }));
 };
