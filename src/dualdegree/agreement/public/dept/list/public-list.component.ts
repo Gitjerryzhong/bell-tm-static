@@ -14,7 +14,6 @@ export class AgreementPublicComponent {
     constructor(private service: AgreementPublicService) {
         this.service.loadList().subscribe(dto => {
             this.agreementSubjects = dto;
-            console.log(dto);
         });
     }
 

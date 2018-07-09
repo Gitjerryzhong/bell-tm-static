@@ -1,6 +1,5 @@
-import {Location} from '@angular/common';
 import {Component} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import * as _ from 'lodash';
 
@@ -34,7 +33,6 @@ export class ApplicationFormEditorComponent {
         private service: ApplicationFormService,
         private route: ActivatedRoute,
         private router: Router,
-        private location: Location,
         private dialogs: CommonDialog,
         private dialog: Dialog,
     ) {
@@ -70,6 +68,19 @@ export class ApplicationFormEditorComponent {
             this.awardId = this.form.awardId;
         } else {
             this.form.awardId = this.awardId;
+        }
+    }
+
+    subjects(university: any): any[] {
+        if (university) {
+            return _.chain(this.universities)
+                .filter(item => item.universityEn === university)
+                .map(data => data.subjects)
+                .flatMap()
+                .value();
+            // return this.universities.filter(item => item.universityEn === university).map(data => data.subjects)[0];
+        } else {
+            return null;
         }
     }
 
