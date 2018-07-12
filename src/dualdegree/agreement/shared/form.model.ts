@@ -26,7 +26,6 @@ export class AgreementItem {
     coMajors: any[];
 
     constructor(dto: any) {
-        // this.form = form;
         this.id = dto.id;
         this.startedGrade = dto.startedGrade;
         this.endedGrade = dto.endedGrade;
