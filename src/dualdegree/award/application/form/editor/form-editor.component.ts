@@ -96,10 +96,16 @@ export class ApplicationFormEditorComponent {
         const validate: string[] = [];
         if (this.isEmpty(this.form.universityCooperative) ||
             this.isEmpty(this.form.majorCooperative) ||
+            this.isEmpty(this.form.bachelorYear) ||
             this.isEmpty(this.form.email) ||
             this.isEmpty(this.form.linkman) ||
             this.isEmpty(this.form.phone)) {
-                validate.push('请检查合作大学、国外专业、Email、联系人、联系人电话等是否为空');
+                validate.push('请检查合作大学、国外专业、获得学位年份、Email、联系人、联系人电话等是否为空');
+        } else {
+            const day = new Date();
+            if (this.form.bachelorYear < 2000 || (this.form.bachelorYear > day.getFullYear())) {
+                validate.push('获得学位年份无效！');
+            }
         }
         return validate;
     }

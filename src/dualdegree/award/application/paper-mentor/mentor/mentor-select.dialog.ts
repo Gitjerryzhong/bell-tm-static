@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import {BaseDialog} from 'core/dialogs';

@@ -9,8 +9,8 @@ export class PaperMentorService extends EditService {
         super(rest, api);
     }
 
-    finish(id: any): Observable<any> {
-        return this.rest.patch(`${this.api.item(id)}?op=FINISH`, {});
+    finish(id: any, comment: string): Observable<any> {
+        return this.rest.patch(`${this.api.item(id)}?op=FINISH`, {comment});
     }
 
     setMentor(value: any): Observable<any> {

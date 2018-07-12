@@ -10,6 +10,7 @@ import {WorkflowModule} from 'core/workflow';
 
 import {UploaderModule} from '../../../shared/uploader/uploader.module';
 import {ApplicationSharedModule} from '../shared/application-shared.module';
+import {WorkFlowFinishModule} from '../shared/finish.module';
 import {PaperApprovalComponent} from './approval.component';
 import {ApplicationApprovalRoutingModule} from './approval.routing';
 
@@ -28,6 +29,7 @@ import {UploaderDialog} from './uploader.dialog';
         ApplicationSharedModule,
         ApplicationApprovalRoutingModule,
         UploaderModule,
+        WorkFlowFinishModule,
     ],
     declarations: [
         PaperApprovalComponent,

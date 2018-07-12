@@ -9,6 +9,7 @@ import {RestModule} from 'core/rest';
 import {WorkflowModule} from 'core/workflow';
 
 import {ApplicationSharedModule} from '../shared/application-shared.module';
+import {WorkFlowFinishModule} from '../shared/finish.module';
 import {PaperMentorComponent} from './paper-mentor.component';
 import {ApplicationApprovalRoutingModule} from './paper-mentor.routing';
 
@@ -26,6 +27,7 @@ import {PaperMentorService} from './paper-mentor.service';
         RestModule.for('/api/dualdegree/checkers/${userId}/papermentors'),
         ApplicationSharedModule,
         ApplicationApprovalRoutingModule,
+        WorkFlowFinishModule,
     ],
     declarations: [
         PaperMentorComponent,

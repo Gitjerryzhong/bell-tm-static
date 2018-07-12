@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 import {Dialog} from 'core/dialogs';
-import {Schedule, ScheduleDto} from 'core/models';
 import {ApiUrl, Rest} from 'core/rest';
-import {ReviewOptions} from 'core/workflow';
 
 import {AwardForm} from '../../shared/form.model';
+import {WorkflowFinishDialog} from '../shared/finish.dialog';
 import {ApplicationForm} from '../shared/form.model';
 
 import {PaperMentorService} from './paper-mentor.service';
@@ -61,10 +60,12 @@ export class PaperMentorItemComponent {
     }
 
     finish() {
-        this.service.finish(this.form.id).subscribe(dto => {
-            this.form = new ApplicationForm(dto.form);
-        }, (error) => {
-            alert(error.json().message);
+        this.dialog.open(WorkflowFinishDialog).then((result: string) => {
+            this.service.finish(this.form.id,  result).subscribe(dto => {
+                this.form = new ApplicationForm(dto.form);
+            }, (error) => {
+                alert(error.json().message);
+            });
         });
     }
 }
