@@ -23,8 +23,8 @@ export class ProjectFormService extends EditService {
         }
     }
 
-    loadTaskList(): Observable<any> {
-        return this.rest.get(`${this.tasksApiUrl}`);
+    loadTaskList(type: string): Observable<any> {
+        return this.rest.get(`${this.tasksApiUrl}?type=${type}`);
     }
 
     loadTaskItem(id: number): Observable<any> {

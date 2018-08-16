@@ -1,3 +1,5 @@
+import * as _ from 'lodash';
+
 import { ProjectForm } from '../shared/form.model';
 
 declare module '../shared/form.model' {
@@ -8,6 +10,7 @@ declare module '../shared/form.model' {
 
 ProjectForm.prototype.toServerDto = function(this: ProjectForm): any {
     return {
+        reviewTaskId: this.reviewTaskId,
         principalId: this.principalId,
         title: this.title,
         degree: this.degree,
@@ -20,9 +23,10 @@ ProjectForm.prototype.toServerDto = function(this: ProjectForm): any {
         name: this.name,
         urls: this.urls,
         level: this.level,
+        major: this.major,
         subtypeId: this.subtypeId,
         originId: this.originId,
-        members: this.members,
+        members: _.chain(this.memberList).map(data => data.value).filter(v => v !== '').join(';').value(),
         content: this.content,
         achievements: this.achievements,
     };

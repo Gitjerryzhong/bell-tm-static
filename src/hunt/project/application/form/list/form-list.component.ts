@@ -9,16 +9,13 @@ import { ProjectForm } from '../shared/form.model';
 })
 
 export class ProjectListComponent {
-    list: ProjectForm[];
+    list: any[];
 
     constructor(private service: ProjectFormService) {
         this.service.loadList().subscribe(dto => this.loadData(dto));
     }
 
     loadData(dto: any[]) {
-        this.list = dto.map(data => {
-            const project = new ProjectForm(data);
-            return project;
-        });
+        this.list = dto;
     }
 }

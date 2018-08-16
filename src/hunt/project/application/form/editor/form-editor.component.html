@@ -34,9 +34,13 @@
                     </option>
                 </select>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label class="control-label">Email</label>
                 <input class="form-control" name="email" type="text" [(ngModel)]="form.email" placeholder="常用电子邮箱"/>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">电话</label>
+                <input class="form-control" name="phone" type="text" [(ngModel)]="form.phone" placeholder="常用手机"/>
             </div>
         </div>
 
@@ -75,6 +79,36 @@
             </div>
         </div>
         <div class="row">
+            <div class="form-group col-md-3">
+                <label class="control-label">学科</label>
+                <select name="title" class="form-control" [(ngModel)]="form.discipline">
+                    <option *ngFor="let item of disciplines | uniqueBy: 'title'" [ngValue]="item">
+                        {{ item }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">一级专业</label>
+                <select name="major" class="form-control" [(ngModel)]="form.major">
+                    <option *ngFor="let item of majors" [ngValue]="item">
+                        {{ item }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">方向</label>
+                <input class="form-control" name="direction" type="text" [(ngModel)]="form.direction" placeholder="研究方向"/>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">来源</label>
+                <select name="origin" class="form-control" [(ngModel)]="form.originId">
+                    <option *ngFor="let item of origins" [ngValue]="item.id">
+                        {{ item.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-12">
                 <label class="control-label">参与人</label>
                 <div class="row">
@@ -89,5 +123,23 @@
                 </div>
             </div>
         </div>
-    </form>{{form | json}}
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="control-label">主要内容</label>
+                    <textarea class="form-control" name="content" rows="10" [(ngModel)]="form.content" placeholder="请简要说明该项目的主要内容。" #suggest></textarea>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="control-label">相关网址</label>
+                    <textarea class="form-control" name="urls" rows="3" [(ngModel)]="form.urls" placeholder="列举支撑本项目的相关网址，每网站占一行。" #suggest></textarea>
+                </div>
+                <div class="form-group mt-4">
+                    <label class="control-label">预期成果</label>
+                    <textarea class="form-control" name="urls" rows="4" [(ngModel)]="form.achievements" placeholder="简略列举预期成果。" #suggest></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
 </ng-container>
