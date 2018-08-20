@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { CommonDirectivesModule } from 'core/common-directives';
 
+import { PipesModule } from '../../../../settings/shared/common-pipes';
+
 import { FormViewerComponent } from './form-viewer.component';
 
 @NgModule({
     imports: [
         CommonModule,
         CommonDirectivesModule,
+        PipesModule,
     ],
     declarations: [
         FormViewerComponent,

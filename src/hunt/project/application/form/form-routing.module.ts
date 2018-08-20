@@ -15,6 +15,7 @@ const routes: Routes = [
     { path: 'taskList', component: TaskList, data: { type: 'application' }},
     { path: 'taskList/:id', component: TaskItem },
     { path: 'create/:reviewTaskId', component: ProjectFormEditorComponent, data: { mode: EditMode.Create }},
+    { path: ':id/edit', component: ProjectFormEditorComponent, data: { mode: EditMode.Edit }},
     { path: ':id', component: ProjectItemComponent },
 ];
 

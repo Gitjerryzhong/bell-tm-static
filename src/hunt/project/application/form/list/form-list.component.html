@@ -13,7 +13,6 @@
             <th>项目来源</th>
             <th>申请日期</th>
             <th>审核进度</th>
-            <th>操作</th>
         </tr>
     </thead>
     <tbody>
@@ -21,12 +20,11 @@
             <tr>
                 <td>{{i + 1}}</td>
                 <td><a [routerLink]="['/',item.id]">{{item.name}}</a></td>
-                <td>{{item.level}}</td>
+                <td>{{item.level | level: 'text'}}</td>
                 <td>{{item.subtype}}</td>
                 <td>{{item.origin}}</td>
                 <td>{{item.dateSubmitted | date: 'yyyy-MM-dd'}}</td>
-                <td>{{item.status}}</td>
-                <td></td>
+                <td><audit-status [status]="item.status"></audit-status></td>
             </tr>
         </ng-template>
     </tbody>
