@@ -23,7 +23,7 @@
                     <td>{{item.level | level: 'text'}}</td>
                     <td>{{item.subtype}}</td>
                     <td>{{item.origin}}</td>
-                    <td>{{item.date | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{item.date | date: 'y-MM-dd HH:mm'}}</td>
                     <td><audit-status [status]="item.status"></audit-status></td>
                 </tr>
             </ng-template>

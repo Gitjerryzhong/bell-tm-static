@@ -68,4 +68,5 @@ module.exports = {
     'hunt/settings/task':                      './src/hunt/settings/task/main.ts',
     'hunt/application/form':                   './src/hunt/project/application/form/main.ts',
     'hunt/application/check':                  './src/hunt/project/application/check/main.ts',
+    'hunt/application/approval':               './src/hunt/project/application/approval/main.ts',
 };

@@ -5,14 +5,14 @@ import {ReviewList} from 'core/models';
 
 const dateLabels: {[key: string]: string} = {
     todo: '申请时间',
-    done: '审核时间',
+    done: '审批时间',
 };
 
 @Component({
-    styleUrls: ['check-list.component.scss'],
-    templateUrl: 'check-list.component.html',
+    styleUrls: ['approval-list.component.scss'],
+    templateUrl: 'approval-list.component.html',
 })
-export class ApplicationCheckListComponent {
+export class ApplicationApprovalListComponent {
     list: ReviewList;
 
     constructor(route: ActivatedRoute) {
