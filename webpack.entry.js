@@ -66,6 +66,8 @@ module.exports = {
     'hunt/settings/type':                      './src/hunt/settings/type/main.ts',
     'dualdegree/admin/finder':                 './src/dualdegree/award/application/finder/main.ts',
     'hunt/settings/task':                      './src/hunt/settings/task/main.ts',
+    'hunt/settings/checker':                   './src/hunt/settings/checker/form/main.ts',
+    'hunt/settings/expert':                    './src/hunt/settings/expert/form/main.ts',
     'hunt/application/form':                   './src/hunt/project/application/form/main.ts',
     'hunt/application/check':                  './src/hunt/project/application/check/main.ts',
     'hunt/application/approval':               './src/hunt/project/application/approval/main.ts',
